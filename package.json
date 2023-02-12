@@ -14,7 +14,7 @@
     "Callbacks"
   ],
   "dependencies": {
-    "rasofiagames.racollection": "^1"
+    "rasofiagames.racollection": "1.1.2"
   },
   "author": {
     "name": "Rasofia Games"
