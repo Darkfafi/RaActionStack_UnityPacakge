@@ -1,7 +1,7 @@
 {
   "name": "rasofiagames.raactionstack",
   "displayName": "RaActionStack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "unity": "2019.4",
   "description": "A simplified Stack based Action Resolve system where Methods are turned into requests which can be reacted to, modified and cancelled.",
   "keywords": [
@@ -14,7 +14,7 @@
     "Callbacks"
   ],
   "dependencies": {
-    "rasofiagames.racollection": ""
+    "rasofiagames.racollection": "^1"
   },
   "author": {
     "name": "Rasofia Games"
