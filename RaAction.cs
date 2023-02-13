@@ -11,27 +11,36 @@ namespace RaActionsStack
 		private readonly HashSet<string> _tags = new HashSet<string>();
 
 		private Handler _method;
+		private bool _canBeCancelled = false;
 
 		public bool CanResolve => ActionState == State.None;
+		public bool CanBeCancelled => ActionState == State.None && _canBeCancelled;
 
 		public State ActionState
 		{
 			get; private set;
 		}
 
-		public static RaAction Create(Handler method)
+		public static RaAction Create(Handler method, bool canBeCancelled = true)
 		{
-			return new RaAction(method);
+			return new RaAction(method, canBeCancelled);
 		}
 
-		private RaAction(Handler method)
+		private RaAction(Handler method, bool canBeCancelled)
 		{
 			_method = method;
+			_canBeCancelled = canBeCancelled;
 		}
 
 		public void Cancel()
 		{
 			ThrowIfNotNoneState(nameof(Cancel));
+
+			if(!_canBeCancelled)
+			{
+				throw new InvalidOperationException("Action was marked as 'Can't be Cancelled'");
+			}
+
 			ActionState = State.Cancelled;
 		}
 
